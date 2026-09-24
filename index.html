@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ClickSend brand messaging map</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@125,800&family=DM+Sans:opsz,wght@9..40,400;9..40,700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#FFFFFF; --surface:#F7F9FA; --tint:#F0F6FF; --ink:#15203B; --muted:#4B575E;
+  --line:#DCE2E5; --blue:#2977FF; --blue-text:#1750C2; --panel:#15203B;
+  --display:"Power Grotesk","Archivo",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --body:"DM Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --rail:48px;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#0C162B; --surface:#15203B; --tint:#192C59; --ink:#FFFFFF; --muted:#AEB7BD;
+    --line:#1C3A80; --blue-text:#85B6FF; --panel:#192C59;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0C162B; --surface:#15203B; --tint:#192C59; --ink:#FFFFFF; --muted:#AEB7BD;
+  --line:#1C3A80; --blue-text:#85B6FF; --panel:#192C59;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/24px var(--body);-webkit-font-smoothing:antialiased}
+p,h1,h2,h3{margin:0}
+a{color:inherit}
+:focus-visible{outline:3px solid #FFB829;outline-offset:3px;border-radius:4px}
+.display{font-family:var(--display);font-weight:800;font-stretch:125%;letter-spacing:-0.01em}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+
+.logo{display:inline-flex;align-items:center;gap:10px;text-decoration:none;color:inherit}
+.logo .mark{width:40px;height:31px;color:var(--blue)}
+.logo .word{display:flex;flex-direction:column;line-height:1}
+.logo .sinch{font:700 9px/1 var(--body);letter-spacing:.28em;margin-bottom:3px}
+.logo .cs{font-family:var(--display);font-weight:800;font-stretch:125%;font-size:22px}
+
+.hero{background:#15203B;color:#fff;padding:28px 0 44px}
+.hero-top{display:flex;justify-content:space-between;align-items:center;gap:16px}
+.draft{font:700 13px/20px var(--body);padding:4px 14px;border-radius:999px;background:#FFB829;color:#15203B}
+.hero h1{margin-top:48px;font-size:clamp(34px,5.5vw,56px);line-height:1.12}
+
+main{padding:16px 0 56px}
+.stage{display:grid;grid-template-columns:var(--rail) 1fr;column-gap:24px;position:relative;padding:48px 0}
+.stage::before{content:"";position:absolute;left:calc(var(--rail)/2 - 1px);top:0;bottom:0;width:2px;background:var(--line)}
+.stage:first-child::before{top:64px}
+.stage:last-child::before{bottom:auto;height:64px}
+.node{position:relative;z-index:1;width:var(--rail);height:var(--rail);border-radius:50%;display:grid;place-items:center;background:var(--bg);border:2px solid var(--blue);font:700 15px var(--body)}
+.head{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;min-height:var(--rail)}
+.head h2{font-size:clamp(22px,3vw,30px);line-height:1.25}
+.pill{font:400 13px/20px var(--body);padding:2px 10px;border-radius:999px;background:var(--tint);color:var(--blue-text)}
+.body{grid-column:2;margin-top:28px;min-width:0}
+.intro{grid-column:2;margin-top:8px;font-size:18px;line-height:28px;color:var(--muted);max-width:38em}
+.intro + .body{margin-top:24px}
+
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+
+.quote{background:var(--tint);border-radius:24px;padding:40px}
+.quote{border-radius:20px;padding:32px 36px}
+.quote p{font-size:20px;line-height:32px;max-width:36em}
+.quote strong{font-weight:700}
+
+.pillar.job .top{padding:28px 32px 32px}
+.pillar.job .name{letter-spacing:0;font-weight:400;font-size:16px;line-height:24px}
+.pillar.job .say{font-size:clamp(26px,4vw,42px);line-height:1.18;max-width:16em}
+
+.position{background:var(--panel);color:#fff;border-radius:24px;padding:44px 40px}
+.position .line{font-size:clamp(28px,4.8vw,52px);line-height:1.15;max-width:14em}
+.position .statement{margin-top:24px;font-size:19px;line-height:30px;color:#C4DCFF;max-width:42em}
+
+.pillar{border-radius:20px;background:var(--surface);overflow:hidden;display:flex;flex-direction:column}
+.pillar .top{background:#15203B;color:#fff;padding:22px}
+.pillar .name{font:700 14px/20px var(--body);color:#85B6FF;letter-spacing:.04em}
+.pillar .say{margin-top:12px;font-size:clamp(21px,2.2vw,25px);line-height:1.2}
+.pillar .desc{padding:20px 22px 24px;font-size:15px;line-height:22px}
+
+.browser{border-radius:20px;border:1px solid var(--line);overflow:hidden}
+.chrome{display:flex;align-items:center;gap:8px;padding:12px 16px;background:var(--surface);border-bottom:1px solid var(--line)}
+.chrome i{width:10px;height:10px;border-radius:50%;background:var(--line)}
+.site{padding:28px 32px 52px}
+.site h3{margin-top:40px;font-size:clamp(28px,4.4vw,48px);line-height:1.2;max-width:16em}
+.site p{margin-top:20px;font-size:18px;line-height:30px;color:var(--muted);max-width:38em}
+
+footer{border-top:1px solid var(--line);padding:24px 0 32px;font-size:14px;color:var(--muted)}
+footer .mark{width:28px;height:22px}
+
+@media (max-width:1000px){.grid4{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:760px){@media (max-width:600px){
+  :root{--rail:36px}
+  .wrap{padding:0 18px}
+  .stage{column-gap:14px;padding:40px 0}
+  .stage::before{display:none}
+  .node{font-size:13px}
+  .body,.intro{grid-column:1 / -1}
+  .body{margin-top:20px}
+  .intro{margin-top:14px;font-size:17px;line-height:26px}
+  .grid4{grid-template-columns:1fr}
+  .quote,.position{padding:28px 22px;border-radius:20px}
+  .site{padding:22px 20px 40px}
+}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="cs-mark" viewBox="0 0 100 78">
+      <mask id="cs-gap">
+        <rect width="100" height="78" fill="#fff"/>
+        <path d="M13 1h37a12 12 0 0 1 12 12v24a12 12 0 0 1-12 12H30L14 61V49h-1A12 12 0 0 1 1 37V13A12 12 0 0 1 13 1z" fill="#000" stroke="#000" stroke-width="10" stroke-linejoin="round"/>
+      </mask>
+      <path mask="url(#cs-gap)" d="M47 21h41a10 10 0 0 1 10 10v21a10 10 0 0 1-10 10h-4v14L68 62H47a10 10 0 0 1-10-10V31a10 10 0 0 1 10-10z" fill="currentColor"/>
+      <path d="M13 1h37a12 12 0 0 1 12 12v24a12 12 0 0 1-12 12H30L14 61V49h-1A12 12 0 0 1 1 37V13A12 12 0 0 1 13 1z" fill="currentColor"/>
+    </symbol>
+  </defs>
+</svg>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-top">
+      <span class="logo" style="color:#fff" aria-label="Sinch ClickSend">
+        <svg class="mark" aria-hidden="true"><use href="#cs-mark"/></svg>
+        <span class="word"><span class="sinch">SINCH</span><span class="cs">ClickSend</span></span>
+      </span>
+      <span class="draft">Draft</span>
+    </div>
+    <h1 class="display">Brand messaging map</h1>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="stage" id="truths" aria-labelledby="h1s">
+    <div class="node" aria-hidden="true">1</div>
+    <div class="head"><h2 class="display" id="h1s">ClickSend's core brand truths</h2></div>
+    <p class="intro">What's genuinely true about ClickSend today, based on what customers value. Everything we say should be backed by one of these.</p>
+    <div class="body grid4">
+      <article class="pillar"><div class="top"><p class="name">1.</p><p class="display say">It fits your business</p></div><p class="desc">Dashboard, API, MCP and integrations mean customers can send the way that suits them.</p></article>
+      <article class="pillar"><div class="top"><p class="name">2.</p><p class="display say">It keeps working</p></div><p class="desc">Direct routes, reliable infrastructure and scale mean it works from the first message to the millionth.</p></article>
+      <article class="pillar"><div class="top"><p class="name">3.</p><p class="display say">It's surprisingly simple</p></div><p class="desc">Customers repeatedly value how easy ClickSend is to set up and use — whether they're developers or dashboard users.</p></article>
+      <article class="pillar"><div class="top"><p class="name">4.</p><p class="display say">It's trusted infrastructure</p></div><p class="desc">Compliance support and dependable delivery take complexity and risk away from the customer.</p></article>
+    </div>
+  </section>
+
+  <section class="stage" id="insight" aria-labelledby="h2s">
+    <div class="node" aria-hidden="true">2</div>
+    <div class="head"><h2 class="display" id="h2s">The key customer insight</h2></div>
+    <div class="body quote">
+      <p>Business messaging is inherently complicated. Customers don't want to become experts in messaging infrastructure — <strong>they just want their messaging to work.</strong></p>
+    </div>
+  </section>
+
+  <section class="stage" id="job" aria-labelledby="h3s">
+    <div class="node" aria-hidden="true">3</div>
+    <div class="head"><h2 class="display" id="h3s">ClickSend's job</h2></div>
+    <div class="body">
+      <article class="pillar job"><div class="top"><p class="name">Not simply “help businesses send messages.” It's:</p><p class="display say">Take the complexity out of business messaging.</p></div></article>
+    </div>
+  </section>
+
+  <section class="stage" id="positioning" aria-labelledby="h4s">
+    <div class="node" aria-hidden="true">4</div>
+    <div class="head"><h2 class="display" id="h4s">Positioning</h2><span class="pill">Internal</span></div>
+    <div class="body position">
+      <p class="display line">Messaging you don't have to think about.</p>
+      <p class="statement">ClickSend makes business messaging simple to set up, easy to connect and dependable at scale — so customers can focus on what they're trying to say, not how it gets there.</p>
+    </div>
+  </section>
+
+  <section class="stage" id="pillars" aria-labelledby="h5s">
+    <div class="node" aria-hidden="true">5</div>
+    <div class="head"><h2 class="display" id="h5s">Messaging architecture</h2><span class="pill">Internal</span></div>
+    <p class="intro">Our four messaging pillars. Each one turns a brand truth into a theme to build from. Use them to shape what we write, not as lines to use word for word.</p>
+    <div class="body grid4">
+      <article class="pillar"><div class="top"><p class="name">1. SIMPLE</p><p class="display say">Just send it.</p></div><p class="desc">Easy setup and intuitive tools for both dashboard users and developers.</p></article>
+      <article class="pillar"><div class="top"><p class="name">2. CONNECTED</p><p class="display say">Fits the way you work.</p></div><p class="desc">API, dashboard and integrations that work with your existing stack.</p></article>
+      <article class="pillar"><div class="top"><p class="name">3. RELIABLE</p><p class="display say">From first message to millionth.</p></div><p class="desc">Dependable infrastructure and direct routes built to keep messages moving at scale.</p></article>
+      <article class="pillar"><div class="top"><p class="name">4. TRUSTED</p><p class="display say">We handle the complexity.</p></div><p class="desc">Compliance support, routing expertise and infrastructure you can rely on.</p></article>
+    </div>
+  </section>
+
+  <section class="stage" id="homepage" aria-labelledby="h6s">
+    <div class="node" aria-hidden="true">6</div>
+    <div class="head"><h2 class="display" id="h6s">Homepage copy example</h2><span class="pill">External</span></div>
+    <div class="body browser">
+      <div class="chrome" aria-hidden="true"><i></i><i></i><i></i></div>
+      <div class="site">
+        <span class="logo" aria-hidden="true"><svg class="mark"><use href="#cs-mark"/></svg><span class="word"><span class="sinch">SINCH</span><span class="cs">ClickSend</span></span></span>
+        <h3 class="display">Your business is complicated. Your messaging shouldn't be.</h3>
+        <p>From your first message to your millionth, ClickSend makes business messaging simple to set up, easy to integrate and built to keep working — wherever and however you send.</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span class="logo"><svg class="mark" aria-hidden="true"><use href="#cs-mark"/></svg><span>The Big Blue Brand Book</span></span>
+  </div>
+</footer>
+</body>
+</html>
