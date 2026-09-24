@@ -63,6 +63,9 @@ main{padding:16px 0 56px}
 .intro + .body{margin-top:24px}
 
 .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.pillar.audience .top{padding:28px 32px 32px}
+.pillar.audience .say{margin-top:0;font-size:clamp(26px,4vw,42px);line-height:1.18;max-width:16em}
+.pillar.audience .desc{padding:22px 32px 26px;font-size:17px;line-height:26px;max-width:44em}
 
 .quote{background:var(--tint);border-radius:24px;padding:40px}
 .quote{border-radius:20px;padding:32px 36px}
@@ -94,7 +97,7 @@ footer{border-top:1px solid var(--line);padding:24px 0 32px;font-size:14px;color
 footer .mark{width:28px;height:22px}
 
 @media (max-width:1000px){.grid4{grid-template-columns:repeat(2,1fr)}}
-@media (max-width:760px){@media (max-width:600px){
+@media (max-width:600px){
   :root{--rail:36px}
   .wrap{padding:0 18px}
   .stage{column-gap:14px;padding:40px 0}
@@ -106,6 +109,61 @@ footer .mark{width:28px;height:22px}
   .grid4{grid-template-columns:1fr}
   .quote,.position{padding:28px 22px;border-radius:20px}
   .site{padding:22px 20px 40px}
+}
+
+/* Type scale: 4 heading levels (brand Display XL / LG / SM / XS) */
+:root{--h1:clamp(36px,6vw,60px);--h2:clamp(28px,4.4vw,48px);--h3:clamp(22px,2.6vw,30px);--h4:clamp(20px,2vw,24px)}
+.hero h1{font-size:var(--h1);line-height:1.2}
+.pillar.audience .say,.pillar.job .say,.position .line,.site h3{font-size:var(--h2);line-height:1.25;max-width:16em}
+.head h2{font-size:var(--h3);line-height:1.27}
+.pillar .say{font-size:var(--h4);line-height:1.33}
+.pillar.audience .say,.pillar.job .say{font-size:var(--h2);line-height:1.25}
+
+/* Spacing: one rhythm for heading → body */
+:root{--hb:16px}
+.pillar{background:#15203B;color:#fff}
+.pillar .top{padding:24px 24px 0}
+.pillar .desc{padding:var(--hb) 24px 24px;color:#C4DCFF}
+.pillar.audience .top,.pillar.job .top{padding:32px 32px 0}
+.pillar.audience .desc{padding:var(--hb) 32px 32px}
+.pillar.job .top{padding-bottom:32px}
+.position .statement{margin-top:var(--hb)}
+.site p{margin-top:var(--hb)}
+.intro{margin-top:12px}
+.intro + .body{margin-top:24px}
+@media (max-width:600px){
+  .pillar .top{padding:20px 20px 0}
+  .pillar .desc{padding:var(--hb) 20px 20px}
+  .pillar.audience .top,.pillar.job .top{padding:24px 22px 0}
+  .pillar.audience .desc{padding:var(--hb) 22px 24px}
+  .pillar.job .top{padding-bottom:24px}
+}
+
+/* Match positioning panel to the large cards */
+.position{background:#15203B;padding:32px;border-radius:20px}
+.position .statement,.pillar.audience .desc{font-size:18px;line-height:28px;color:#C4DCFF;max-width:42em}
+@media (max-width:600px){.position{padding:24px 22px}}
+
+/* Proof points in truth cards */
+.proofs{list-style:none;margin:auto 24px 24px;padding:16px 0 0;border-top:1px solid #1C3A80;display:grid;gap:10px}
+.proofs li{position:relative;padding-left:22px;font:700 14px/20px var(--body);color:#fff}
+.proofs li::before{content:"";position:absolute;left:0;top:5px;width:10px;height:10px;border-radius:50%;background:#2977FF}
+.pillar .desc:has(+ .proofs){padding-bottom:16px}
+@media (max-width:600px){.proofs{margin:auto 20px 20px}}
+
+/* Audience map */
+.branches{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:0 32px;padding-top:52px}
+.branches::before{content:"";position:absolute;left:50%;top:20px;width:2px;height:16px;background:#2977FF;transform:translateX(-1px)}
+.branches::after{content:"";position:absolute;top:36px;left:25%;right:25%;height:16px;border:2px solid #2977FF;border-bottom:0;border-radius:10px 10px 0 0}
+.aud{background:#192C59;border:1px solid #1C3A80;border-radius:14px;padding:20px 22px;text-align:center}
+.pillar.audience .top{text-align:center}
+.pillar.audience .top .say{max-width:none}
+.aud .display{font-size:var(--h4);line-height:1.33;color:#fff}
+.pillar.audience .desc{padding-top:24px;text-align:center;margin:0 auto}
+@media (max-width:600px){
+  .pillar.audience .top,.aud,.pillar.audience .desc{text-align:left}
+  .branches{grid-template-columns:1fr;margin:0 22px;padding-top:20px;gap:12px}
+  .branches::before,.branches::after{display:none}
 }
 </style>
 </head>
@@ -139,20 +197,35 @@ footer .mark{width:28px;height:22px}
 
 <main class="wrap">
 
-  <section class="stage" id="truths" aria-labelledby="h1s">
+  <section class="stage" id="audience" aria-labelledby="h0s">
     <div class="node" aria-hidden="true">1</div>
+    <div class="head"><h2 class="display" id="h0s">Who we're for</h2></div>
+    <div class="body">
+      <article class="pillar audience">
+        <div class="top"><p class="display say">Serious SMBs</p></div>
+        <div class="branches">
+          <div class="aud"><p class="display">SMB owners</p></div>
+          <div class="aud"><p class="display">Developers who build for them</p></div>
+        </div>
+        <p class="desc"><strong style="color:#fff">Two aligned audiences, both rooted in SMB thinking.</strong> The business owner and the developer building for them want the same thing: messaging that works without the enterprise complexity.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="stage" id="truths" aria-labelledby="h1s">
+    <div class="node" aria-hidden="true">2</div>
     <div class="head"><h2 class="display" id="h1s">ClickSend's core brand truths</h2></div>
     <p class="intro">What's genuinely true about ClickSend today, based on what customers value. Everything we say should be backed by one of these.</p>
     <div class="body grid4">
-      <article class="pillar"><div class="top"><p class="name">1.</p><p class="display say">It fits your business</p></div><p class="desc">Dashboard, API, MCP and integrations mean customers can send the way that suits them.</p></article>
-      <article class="pillar"><div class="top"><p class="name">2.</p><p class="display say">It keeps working</p></div><p class="desc">Direct routes, reliable infrastructure and scale mean it works from the first message to the millionth.</p></article>
-      <article class="pillar"><div class="top"><p class="name">3.</p><p class="display say">It's surprisingly simple</p></div><p class="desc">Customers repeatedly value how easy ClickSend is to set up and use — whether they're developers or dashboard users.</p></article>
-      <article class="pillar"><div class="top"><p class="name">4.</p><p class="display say">It's trusted infrastructure</p></div><p class="desc">Compliance support and dependable delivery take complexity and risk away from the customer.</p></article>
+      <article class="pillar"><div class="top"><p class="name">1.</p><p class="display say">It fits your business</p></div><p class="desc">Dashboard, API, MCP and integrations mean customers can send the way that suits them.</p><ul class="proofs"><li>200+ integrations.</li><li>Transparent pay-as-you-go pricing.</li></ul></article>
+      <article class="pillar"><div class="top"><p class="name">2.</p><p class="display say">It keeps working</p></div><p class="desc">Direct routes, reliable infrastructure and scale mean it works from the first message to the millionth.</p><ul class="proofs"><li>99.95% uptime.</li><li>100M SMS per month.</li></ul></article>
+      <article class="pillar"><div class="top"><p class="name">3.</p><p class="display say">It's surprisingly simple</p></div><p class="desc">Customers repeatedly value how easy ClickSend is to set up and use — whether they're developers or dashboard users.</p><ul class="proofs"><li>Signup to first message from a dashboard in minutes.</li><li>First Successful API Call in under 5 minutes.</li></ul></article>
+      <article class="pillar"><div class="top"><p class="name">4.</p><p class="display say">It's trusted infrastructure</p></div><p class="desc">Compliance support and dependable delivery take complexity and risk away from the customer.</p><ul class="proofs"><li>24/7 human support.</li><li>Direct carrier routes to 190+ countries.</li></ul></article>
     </div>
   </section>
 
   <section class="stage" id="insight" aria-labelledby="h2s">
-    <div class="node" aria-hidden="true">2</div>
+    <div class="node" aria-hidden="true">3</div>
     <div class="head"><h2 class="display" id="h2s">The key customer insight</h2></div>
     <div class="body quote">
       <p>Business messaging is inherently complicated. Customers don't want to become experts in messaging infrastructure — <strong>they just want their messaging to work.</strong></p>
@@ -160,7 +233,7 @@ footer .mark{width:28px;height:22px}
   </section>
 
   <section class="stage" id="job" aria-labelledby="h3s">
-    <div class="node" aria-hidden="true">3</div>
+    <div class="node" aria-hidden="true">4</div>
     <div class="head"><h2 class="display" id="h3s">ClickSend's job</h2></div>
     <div class="body">
       <article class="pillar job"><div class="top"><p class="name">Not simply “help businesses send messages.” It's:</p><p class="display say">Take the complexity out of business messaging.</p></div></article>
@@ -168,7 +241,7 @@ footer .mark{width:28px;height:22px}
   </section>
 
   <section class="stage" id="positioning" aria-labelledby="h4s">
-    <div class="node" aria-hidden="true">4</div>
+    <div class="node" aria-hidden="true">5</div>
     <div class="head"><h2 class="display" id="h4s">Positioning</h2><span class="pill">Internal</span></div>
     <div class="body position">
       <p class="display line">Messaging you don't have to think about.</p>
@@ -177,7 +250,7 @@ footer .mark{width:28px;height:22px}
   </section>
 
   <section class="stage" id="pillars" aria-labelledby="h5s">
-    <div class="node" aria-hidden="true">5</div>
+    <div class="node" aria-hidden="true">6</div>
     <div class="head"><h2 class="display" id="h5s">Messaging architecture</h2><span class="pill">Internal</span></div>
     <p class="intro">Our four messaging pillars. Each one turns a brand truth into a theme to build from. Use them to shape what we write, not as lines to use word for word.</p>
     <div class="body grid4">
@@ -189,7 +262,7 @@ footer .mark{width:28px;height:22px}
   </section>
 
   <section class="stage" id="homepage" aria-labelledby="h6s">
-    <div class="node" aria-hidden="true">6</div>
+    <div class="node" aria-hidden="true">7</div>
     <div class="head"><h2 class="display" id="h6s">Homepage copy example</h2><span class="pill">External</span></div>
     <div class="body browser">
       <div class="chrome" aria-hidden="true"><i></i><i></i><i></i></div>
